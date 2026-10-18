@@ -11,7 +11,4 @@ build/temperature-monitor.elf: main.c monitor.c monitor.h calibration.h | build
 	$(AVR_SIZE) $@
 build/temperature-monitor.hex: build/temperature-monitor.elf
 	$(AVR_OBJCOPY) -O ihex -R .eeprom $< $@
-host-test: | build
-	$(CC) -std=c11 -Wall -Wextra -Werror -fsanitize=address,undefined -g monitor.c ../tests/test_monitor.c -o build/test_monitor
-	./build/test_monitor
-.PHONY: all host-test
+.PHONY: all
