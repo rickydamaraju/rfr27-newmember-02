@@ -1,0 +1,13 @@
+.DS_Store
+**/build/
+**/__pycache__/
+*.dSYM/
+**/History/
+**/__Previews/
+*.PrjPcbStructure
+*.SchDocPreview
+*.SchDoc~
+*.PrjPcb~
+*.SchDoc.Zip
+*.PrjPcb.Zip
+*.LOG

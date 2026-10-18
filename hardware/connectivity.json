@@ -1,0 +1,1179 @@
+{
+  "components": [
+    {
+      "ref": "R1",
+      "value": "4.7k 1%",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "+5V"
+        },
+        "2": {
+          "name": "2",
+          "net": "SENSE00"
+        }
+      }
+    },
+    {
+      "ref": "D1",
+      "value": "TEMP DIODE",
+      "pins": {
+        "A": {
+          "name": "A",
+          "net": "SENSE00"
+        },
+        "K": {
+          "name": "K",
+          "net": "GND"
+        }
+      }
+    },
+    {
+      "ref": "R2",
+      "value": "4.7k 1%",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "+5V"
+        },
+        "2": {
+          "name": "2",
+          "net": "SENSE01"
+        }
+      }
+    },
+    {
+      "ref": "D2",
+      "value": "TEMP DIODE",
+      "pins": {
+        "A": {
+          "name": "A",
+          "net": "SENSE01"
+        },
+        "K": {
+          "name": "K",
+          "net": "GND"
+        }
+      }
+    },
+    {
+      "ref": "R3",
+      "value": "4.7k 1%",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "+5V"
+        },
+        "2": {
+          "name": "2",
+          "net": "SENSE02"
+        }
+      }
+    },
+    {
+      "ref": "D3",
+      "value": "TEMP DIODE",
+      "pins": {
+        "A": {
+          "name": "A",
+          "net": "SENSE02"
+        },
+        "K": {
+          "name": "K",
+          "net": "GND"
+        }
+      }
+    },
+    {
+      "ref": "R4",
+      "value": "4.7k 1%",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "+5V"
+        },
+        "2": {
+          "name": "2",
+          "net": "SENSE03"
+        }
+      }
+    },
+    {
+      "ref": "D4",
+      "value": "TEMP DIODE",
+      "pins": {
+        "A": {
+          "name": "A",
+          "net": "SENSE03"
+        },
+        "K": {
+          "name": "K",
+          "net": "GND"
+        }
+      }
+    },
+    {
+      "ref": "R5",
+      "value": "4.7k 1%",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "+5V"
+        },
+        "2": {
+          "name": "2",
+          "net": "SENSE04"
+        }
+      }
+    },
+    {
+      "ref": "D5",
+      "value": "TEMP DIODE",
+      "pins": {
+        "A": {
+          "name": "A",
+          "net": "SENSE04"
+        },
+        "K": {
+          "name": "K",
+          "net": "GND"
+        }
+      }
+    },
+    {
+      "ref": "R6",
+      "value": "4.7k 1%",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "+5V"
+        },
+        "2": {
+          "name": "2",
+          "net": "SENSE05"
+        }
+      }
+    },
+    {
+      "ref": "D6",
+      "value": "TEMP DIODE",
+      "pins": {
+        "A": {
+          "name": "A",
+          "net": "SENSE05"
+        },
+        "K": {
+          "name": "K",
+          "net": "GND"
+        }
+      }
+    },
+    {
+      "ref": "R7",
+      "value": "4.7k 1%",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "+5V"
+        },
+        "2": {
+          "name": "2",
+          "net": "SENSE06"
+        }
+      }
+    },
+    {
+      "ref": "D7",
+      "value": "TEMP DIODE",
+      "pins": {
+        "A": {
+          "name": "A",
+          "net": "SENSE06"
+        },
+        "K": {
+          "name": "K",
+          "net": "GND"
+        }
+      }
+    },
+    {
+      "ref": "R8",
+      "value": "4.7k 1%",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "+5V"
+        },
+        "2": {
+          "name": "2",
+          "net": "SENSE07"
+        }
+      }
+    },
+    {
+      "ref": "D8",
+      "value": "TEMP DIODE",
+      "pins": {
+        "A": {
+          "name": "A",
+          "net": "SENSE07"
+        },
+        "K": {
+          "name": "K",
+          "net": "GND"
+        }
+      }
+    },
+    {
+      "ref": "R9",
+      "value": "4.7k 1%",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "+5V"
+        },
+        "2": {
+          "name": "2",
+          "net": "SENSE08"
+        }
+      }
+    },
+    {
+      "ref": "D9",
+      "value": "TEMP DIODE",
+      "pins": {
+        "A": {
+          "name": "A",
+          "net": "SENSE08"
+        },
+        "K": {
+          "name": "K",
+          "net": "GND"
+        }
+      }
+    },
+    {
+      "ref": "R10",
+      "value": "4.7k 1%",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "+5V"
+        },
+        "2": {
+          "name": "2",
+          "net": "SENSE09"
+        }
+      }
+    },
+    {
+      "ref": "D10",
+      "value": "TEMP DIODE",
+      "pins": {
+        "A": {
+          "name": "A",
+          "net": "SENSE09"
+        },
+        "K": {
+          "name": "K",
+          "net": "GND"
+        }
+      }
+    },
+    {
+      "ref": "R11",
+      "value": "4.7k 1%",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "+5V"
+        },
+        "2": {
+          "name": "2",
+          "net": "SENSE10"
+        }
+      }
+    },
+    {
+      "ref": "D11",
+      "value": "TEMP DIODE",
+      "pins": {
+        "A": {
+          "name": "A",
+          "net": "SENSE10"
+        },
+        "K": {
+          "name": "K",
+          "net": "GND"
+        }
+      }
+    },
+    {
+      "ref": "R12",
+      "value": "4.7k 1%",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "+5V"
+        },
+        "2": {
+          "name": "2",
+          "net": "SENSE11"
+        }
+      }
+    },
+    {
+      "ref": "D12",
+      "value": "TEMP DIODE",
+      "pins": {
+        "A": {
+          "name": "A",
+          "net": "SENSE11"
+        },
+        "K": {
+          "name": "K",
+          "net": "GND"
+        }
+      }
+    },
+    {
+      "ref": "R13",
+      "value": "4.7k 1%",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "+5V"
+        },
+        "2": {
+          "name": "2",
+          "net": "SENSE12"
+        }
+      }
+    },
+    {
+      "ref": "D13",
+      "value": "TEMP DIODE",
+      "pins": {
+        "A": {
+          "name": "A",
+          "net": "SENSE12"
+        },
+        "K": {
+          "name": "K",
+          "net": "GND"
+        }
+      }
+    },
+    {
+      "ref": "R14",
+      "value": "4.7k 1%",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "+5V"
+        },
+        "2": {
+          "name": "2",
+          "net": "SENSE13"
+        }
+      }
+    },
+    {
+      "ref": "D14",
+      "value": "TEMP DIODE",
+      "pins": {
+        "A": {
+          "name": "A",
+          "net": "SENSE13"
+        },
+        "K": {
+          "name": "K",
+          "net": "GND"
+        }
+      }
+    },
+    {
+      "ref": "R15",
+      "value": "4.7k 1%",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "+5V"
+        },
+        "2": {
+          "name": "2",
+          "net": "SENSE14"
+        }
+      }
+    },
+    {
+      "ref": "D15",
+      "value": "TEMP DIODE",
+      "pins": {
+        "A": {
+          "name": "A",
+          "net": "SENSE14"
+        },
+        "K": {
+          "name": "K",
+          "net": "GND"
+        }
+      }
+    },
+    {
+      "ref": "R16",
+      "value": "4.7k 1%",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "+5V"
+        },
+        "2": {
+          "name": "2",
+          "net": "SENSE15"
+        }
+      }
+    },
+    {
+      "ref": "D16",
+      "value": "TEMP DIODE",
+      "pins": {
+        "A": {
+          "name": "A",
+          "net": "SENSE15"
+        },
+        "K": {
+          "name": "K",
+          "net": "GND"
+        }
+      }
+    },
+    {
+      "ref": "U2",
+      "value": "CD74HC4067",
+      "pins": {
+        "9": {
+          "name": "I0",
+          "net": "SENSE00"
+        },
+        "8": {
+          "name": "I1",
+          "net": "SENSE01"
+        },
+        "7": {
+          "name": "I2",
+          "net": "SENSE02"
+        },
+        "6": {
+          "name": "I3",
+          "net": "SENSE03"
+        },
+        "5": {
+          "name": "I4",
+          "net": "SENSE04"
+        },
+        "4": {
+          "name": "I5",
+          "net": "SENSE05"
+        },
+        "3": {
+          "name": "I6",
+          "net": "SENSE06"
+        },
+        "2": {
+          "name": "I7",
+          "net": "SENSE07"
+        },
+        "23": {
+          "name": "I8",
+          "net": "SENSE08"
+        },
+        "22": {
+          "name": "I9",
+          "net": "SENSE09"
+        },
+        "21": {
+          "name": "I10",
+          "net": "SENSE10"
+        },
+        "20": {
+          "name": "I11",
+          "net": "SENSE11"
+        },
+        "19": {
+          "name": "I12",
+          "net": "SENSE12"
+        },
+        "18": {
+          "name": "I13",
+          "net": "SENSE13"
+        },
+        "17": {
+          "name": "I14",
+          "net": "SENSE14"
+        },
+        "16": {
+          "name": "I15",
+          "net": "SENSE15"
+        },
+        "24": {
+          "name": "VCC",
+          "net": "+5V"
+        },
+        "12": {
+          "name": "GND",
+          "net": "GND"
+        },
+        "1": {
+          "name": "COMMON",
+          "net": "ADC_IN"
+        },
+        "10": {
+          "name": "S0",
+          "net": "MUX_S0"
+        },
+        "11": {
+          "name": "S1",
+          "net": "MUX_S1"
+        },
+        "14": {
+          "name": "S2",
+          "net": "MUX_S2"
+        },
+        "13": {
+          "name": "S3",
+          "net": "MUX_S3"
+        },
+        "15": {
+          "name": "E",
+          "net": "MUX_EN"
+        }
+      }
+    },
+    {
+      "ref": "R20",
+      "value": "100k",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "MUX_S0"
+        },
+        "2": {
+          "name": "2",
+          "net": "GND"
+        }
+      }
+    },
+    {
+      "ref": "R21",
+      "value": "100k",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "MUX_S1"
+        },
+        "2": {
+          "name": "2",
+          "net": "GND"
+        }
+      }
+    },
+    {
+      "ref": "R22",
+      "value": "100k",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "MUX_S2"
+        },
+        "2": {
+          "name": "2",
+          "net": "GND"
+        }
+      }
+    },
+    {
+      "ref": "R23",
+      "value": "100k",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "MUX_S3"
+        },
+        "2": {
+          "name": "2",
+          "net": "GND"
+        }
+      }
+    },
+    {
+      "ref": "R24",
+      "value": "10k",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "+5V"
+        },
+        "2": {
+          "name": "2",
+          "net": "MUX_EN"
+        }
+      }
+    },
+    {
+      "ref": "C1",
+      "value": "100nF",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "+5V"
+        },
+        "2": {
+          "name": "2",
+          "net": "GND"
+        }
+      }
+    },
+    {
+      "ref": "C2",
+      "value": "10uF 10V",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "+5V"
+        },
+        "2": {
+          "name": "2",
+          "net": "GND"
+        }
+      }
+    },
+    {
+      "ref": "C3",
+      "value": "1nF",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "ADC_IN"
+        },
+        "2": {
+          "name": "2",
+          "net": "GND"
+        }
+      }
+    },
+    {
+      "ref": "U1",
+      "value": "ARDUINO NANO (ATmega328P)",
+      "pins": {
+        "1": {
+          "name": "D1/TX",
+          "net": null
+        },
+        "2": {
+          "name": "D0/RX",
+          "net": null
+        },
+        "3": {
+          "name": "RESET",
+          "net": null
+        },
+        "4": {
+          "name": "GND",
+          "net": "GND"
+        },
+        "5": {
+          "name": "D2",
+          "net": "MUX_S0"
+        },
+        "6": {
+          "name": "D3",
+          "net": "MUX_S1"
+        },
+        "7": {
+          "name": "D4",
+          "net": "MUX_S2"
+        },
+        "8": {
+          "name": "D5",
+          "net": "MUX_S3"
+        },
+        "9": {
+          "name": "D6",
+          "net": "MUX_EN"
+        },
+        "10": {
+          "name": "D7",
+          "net": "LED_DRIVE"
+        },
+        "11": {
+          "name": "D8",
+          "net": null
+        },
+        "12": {
+          "name": "D9",
+          "net": null
+        },
+        "13": {
+          "name": "D10",
+          "net": null
+        },
+        "14": {
+          "name": "D11",
+          "net": null
+        },
+        "15": {
+          "name": "D12",
+          "net": null
+        },
+        "30": {
+          "name": "VIN",
+          "net": null
+        },
+        "29": {
+          "name": "GND",
+          "net": "GND"
+        },
+        "28": {
+          "name": "RESET",
+          "net": null
+        },
+        "27": {
+          "name": "5V",
+          "net": "+5V"
+        },
+        "26": {
+          "name": "A7",
+          "net": null
+        },
+        "25": {
+          "name": "A6",
+          "net": null
+        },
+        "24": {
+          "name": "A5/SCL",
+          "net": "SCL"
+        },
+        "23": {
+          "name": "A4/SDA",
+          "net": "SDA"
+        },
+        "22": {
+          "name": "A3",
+          "net": null
+        },
+        "21": {
+          "name": "A2",
+          "net": null
+        },
+        "20": {
+          "name": "A1",
+          "net": null
+        },
+        "19": {
+          "name": "A0",
+          "net": "ADC_IN"
+        },
+        "18": {
+          "name": "AREF",
+          "net": null
+        },
+        "17": {
+          "name": "3V3",
+          "net": null
+        },
+        "16": {
+          "name": "D13",
+          "net": null
+        }
+      }
+    },
+    {
+      "ref": "R17",
+      "value": "1k",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "LED_DRIVE"
+        },
+        "2": {
+          "name": "2",
+          "net": "LED_A"
+        }
+      }
+    },
+    {
+      "ref": "D17",
+      "value": "RED LED",
+      "pins": {
+        "A": {
+          "name": "A",
+          "net": "LED_A"
+        },
+        "K": {
+          "name": "K",
+          "net": "GND"
+        }
+      }
+    },
+    {
+      "ref": "R18",
+      "value": "4.7k",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "+5V"
+        },
+        "2": {
+          "name": "2",
+          "net": "SDA"
+        }
+      }
+    },
+    {
+      "ref": "R19",
+      "value": "4.7k",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "+5V"
+        },
+        "2": {
+          "name": "2",
+          "net": "SCL"
+        }
+      }
+    },
+    {
+      "ref": "J3",
+      "value": "I2C TO 5V PEER",
+      "pins": {
+        "1": {
+          "name": "GND",
+          "net": "GND"
+        },
+        "2": {
+          "name": "SDA",
+          "net": "SDA"
+        },
+        "3": {
+          "name": "SCL",
+          "net": "SCL"
+        }
+      }
+    },
+    {
+      "ref": "J1",
+      "value": "12V INPUT",
+      "pins": {
+        "1": {
+          "name": "+12V",
+          "net": "VIN_12V"
+        },
+        "2": {
+          "name": "GND",
+          "net": "GND"
+        }
+      }
+    },
+    {
+      "ref": "C4",
+      "value": "10uF 25V",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "VIN_12V"
+        },
+        "2": {
+          "name": "2",
+          "net": "GND"
+        }
+      }
+    },
+    {
+      "ref": "U3",
+      "value": "R-78E5.0-0.5",
+      "pins": {
+        "1": {
+          "name": "IN",
+          "net": "VIN_12V"
+        },
+        "2": {
+          "name": "GND",
+          "net": "GND"
+        },
+        "3": {
+          "name": "OUT",
+          "net": "BUCK_5V"
+        }
+      }
+    },
+    {
+      "ref": "C5",
+      "value": "10uF 10V",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "BUCK_5V"
+        },
+        "2": {
+          "name": "2",
+          "net": "GND"
+        }
+      }
+    },
+    {
+      "ref": "C6",
+      "value": "100nF",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "BUCK_5V"
+        },
+        "2": {
+          "name": "2",
+          "net": "GND"
+        }
+      }
+    },
+    {
+      "ref": "J2",
+      "value": "BENCH 5V",
+      "pins": {
+        "1": {
+          "name": "+5V",
+          "net": "BENCH_5V"
+        },
+        "2": {
+          "name": "GND",
+          "net": "GND"
+        }
+      }
+    },
+    {
+      "ref": "JP1",
+      "value": "SOURCE SELECT",
+      "pins": {
+        "1": {
+          "name": "BUCK",
+          "net": "BUCK_5V"
+        },
+        "2": {
+          "name": "SYSTEM",
+          "net": "+5V"
+        },
+        "3": {
+          "name": "BENCH",
+          "net": "BENCH_5V"
+        }
+      }
+    }
+  ],
+  "nets": {
+    "+5V": [
+      "R1-1",
+      "R2-1",
+      "R3-1",
+      "R4-1",
+      "R5-1",
+      "R6-1",
+      "R7-1",
+      "R8-1",
+      "R9-1",
+      "R10-1",
+      "R11-1",
+      "R12-1",
+      "R13-1",
+      "R14-1",
+      "R15-1",
+      "R16-1",
+      "U2-24",
+      "R24-1",
+      "C1-1",
+      "C2-1",
+      "U1-27",
+      "R18-1",
+      "R19-1",
+      "JP1-2"
+    ],
+    "SENSE00": [
+      "R1-2",
+      "D1-A",
+      "U2-9"
+    ],
+    "GND": [
+      "D1-K",
+      "D2-K",
+      "D3-K",
+      "D4-K",
+      "D5-K",
+      "D6-K",
+      "D7-K",
+      "D8-K",
+      "D9-K",
+      "D10-K",
+      "D11-K",
+      "D12-K",
+      "D13-K",
+      "D14-K",
+      "D15-K",
+      "D16-K",
+      "U2-12",
+      "R20-2",
+      "R21-2",
+      "R22-2",
+      "R23-2",
+      "C1-2",
+      "C2-2",
+      "C3-2",
+      "U1-4",
+      "U1-29",
+      "D17-K",
+      "J3-1",
+      "J1-2",
+      "C4-2",
+      "U3-2",
+      "C5-2",
+      "C6-2",
+      "J2-2"
+    ],
+    "SENSE01": [
+      "R2-2",
+      "D2-A",
+      "U2-8"
+    ],
+    "SENSE02": [
+      "R3-2",
+      "D3-A",
+      "U2-7"
+    ],
+    "SENSE03": [
+      "R4-2",
+      "D4-A",
+      "U2-6"
+    ],
+    "SENSE04": [
+      "R5-2",
+      "D5-A",
+      "U2-5"
+    ],
+    "SENSE05": [
+      "R6-2",
+      "D6-A",
+      "U2-4"
+    ],
+    "SENSE06": [
+      "R7-2",
+      "D7-A",
+      "U2-3"
+    ],
+    "SENSE07": [
+      "R8-2",
+      "D8-A",
+      "U2-2"
+    ],
+    "SENSE08": [
+      "R9-2",
+      "D9-A",
+      "U2-23"
+    ],
+    "SENSE09": [
+      "R10-2",
+      "D10-A",
+      "U2-22"
+    ],
+    "SENSE10": [
+      "R11-2",
+      "D11-A",
+      "U2-21"
+    ],
+    "SENSE11": [
+      "R12-2",
+      "D12-A",
+      "U2-20"
+    ],
+    "SENSE12": [
+      "R13-2",
+      "D13-A",
+      "U2-19"
+    ],
+    "SENSE13": [
+      "R14-2",
+      "D14-A",
+      "U2-18"
+    ],
+    "SENSE14": [
+      "R15-2",
+      "D15-A",
+      "U2-17"
+    ],
+    "SENSE15": [
+      "R16-2",
+      "D16-A",
+      "U2-16"
+    ],
+    "ADC_IN": [
+      "U2-1",
+      "C3-1",
+      "U1-19"
+    ],
+    "MUX_S0": [
+      "U2-10",
+      "R20-1",
+      "U1-5"
+    ],
+    "MUX_S1": [
+      "U2-11",
+      "R21-1",
+      "U1-6"
+    ],
+    "MUX_S2": [
+      "U2-14",
+      "R22-1",
+      "U1-7"
+    ],
+    "MUX_S3": [
+      "U2-13",
+      "R23-1",
+      "U1-8"
+    ],
+    "MUX_EN": [
+      "U2-15",
+      "R24-2",
+      "U1-9"
+    ],
+    "LED_DRIVE": [
+      "U1-10",
+      "R17-1"
+    ],
+    "SCL": [
+      "U1-24",
+      "R19-2",
+      "J3-3"
+    ],
+    "SDA": [
+      "U1-23",
+      "R18-2",
+      "J3-2"
+    ],
+    "LED_A": [
+      "R17-2",
+      "D17-A"
+    ],
+    "VIN_12V": [
+      "J1-1",
+      "C4-1",
+      "U3-1"
+    ],
+    "BUCK_5V": [
+      "U3-3",
+      "C5-1",
+      "C6-1",
+      "JP1-1"
+    ],
+    "BENCH_5V": [
+      "J2-1",
+      "JP1-3"
+    ]
+  }
+}

@@ -1,0 +1,13 @@
+[Design]
+Version=1.0
+DocumentPath=
+ProjectName=rfr27-temperature-monitor
+HierarchyMode=1
+
+[Document1]
+DocumentPath=TemperatureMonitor.SchDoc
+AnnotationEnabled=1
+AnnotateStartValue=1
+AnnotationIndexControlEnabled=0
+AnnotateSuffix=
+AnnotateScope=All
