@@ -1,61 +1,70 @@
-# Design Document for 8-Sensor Temperature Monitor
+# Design Document for the 8-Sensor Temperature Monitor
 
-RFR Group 02 - October 18, 2026
+RFR Group 02
+November 13, 2026
 
-## Circuit Description
+## Purpose and current status
 
-![Circuit signal path](figures/architecture.png)
+This project uses an Arduino Nano to read eight temperature-sensitive diodes. It reports the highest valid temperature and all eight readings over I2C. A red LED blinks when the highest reading is above 60 degrees Celsius or when a sensor appears faulty.
 
-Figure 1. One Arduino Nano ADC input reads eight diode channels through the multiplexer.
+The Arduino sketch compiled in the Arduino IDE and was uploaded to the Nano. The eight-diode circuit has not been powered and tested as a complete system. The diode part number is still unknown, so the temperatures in the code use example calibration values. The schematic shows some parts that have not been confirmed on the photographed breadboard. Those differences are described below.
 
-The design uses eight temperature-sensitive diodes. The Altium schematic keeps the originally specified CD74HC4067 multiplexer, with only channels 0 through 7 connected. The physical circuit uses the newly specified CD4051BE 8:1 multiplexer. The Arduino Nano selects each diode, reads its voltage through A0, and estimates its temperature using the Analog-to-Digital Converter (ADC). If a temperature exceeds 60 degrees Celsius or a sensor reading appears faulty, the Nano blinks a red LED. The readings are available over I2C.
+## Circuit path
 
-This document describes a proposed design. It has not been built or tested. We do not know the exact part number for our diodes. At this time, we are estimating temperatures based upon example calibration values. Once we have the supplied diodes in the shop, we will measure them and update our calculations accordingly.
+![Eight-sensor circuit path](figures/architecture.png)
 
-## Component Choices
+Figure 1. The eight diode signals share one ADC input. The amplifier is shown in the updated schematic but has not been confirmed on the breadboard.
 
-Each diode has a 4.7 kOhm resistor placed between 5 volts and its anode. The cathode of each diode connects directly to ground. The voltage at the junction between the resistor and diode is the temperature signal. By giving each diode its own series resistor, we keep each diode biased while the multiplexer switches among channels. The photographed breadboard connects the multiplexer output directly to Nano pin A0. The updated reference schematic puts an MCP6002 amplifier between them. Pins D2 through D4 control the three select lines. Pin D6 controls whether or not the multiplexer is enabled. On the schematic's CD74HC4067, S3 is tied to ground and channels 8 through 15 are unused.
+Each diode has its own 4.7 kOhm resistor from 5 V. The diode's cathode goes to ground. The voltage where the resistor meets the diode is the sensor signal. A separate resistor keeps each diode biased even while the multiplexer is reading another channel.
 
-The CD4051BE used on the breadboard has a different pinout from the CD74HC4067 shown on the schematic. Connect Nano D2, D3, and D4 to the CD4051BE A, B, and C inputs on pins 11, 10, and 9. Connect D6 to inhibit pin 6 and A0 to common pin 3. Connect 5 volts to VDD pin 16. Connect both VSS pin 8 and VEE pin 7 to ground. The eight diode signals connect to channel pins 13, 14, 15, 12, 1, 5, 2, and 4 in channel order from 0 to 7.
+The Altium schematic keeps the originally required CD74HC4067. It uses channels 0 through 7, connects its fourth select line to ground, and leaves channels 8 through 15 unused. The physical breadboard design uses the CD4051BE 8-channel multiplexer instead. These chips do the same switching job, but their pins are different. Nano pins D2, D3, and D4 select a channel, D6 controls the multiplexer enable input, and A0 reads its output.
 
-The uploaded firmware uses the Nano's 1.1-volt ADC reference for the direct diode signal. This choice results in smaller voltage increments compared to using the 5-volt reference. The updated schematic adds an MCP6002 amplifier with a 47-kiloohm feedback resistor and a 10-kiloohm resistor to ground. Its nominal gain is 1 + 47 / 10 = 5.7. An approximately 0.65-volt diode signal would become about 3.7 volts, so this amplifier cannot be used with the firmware's 1.1-volt reference. Before building the amplified path, the firmware must use a suitable ADC reference and new calibration values. The second amplifier is connected as a grounded follower. A 1-nanofarad capacitor at A0 helps filter transient voltages caused by switching. Following a switch to a new channel, the software waits for 100 microseconds before performing a single conversion. Next, it takes eight additional conversions and calculates their average. While averaging reduces noise, it does nothing to improve calibration.
+We chose one multiplexer and one Nano ADC input because the Nano can read the channels one at a time. This uses fewer Nano analog pins than connecting every diode to its own input. It also keeps the code simple. The tradeoff is that the eight readings are taken in sequence rather than at exactly the same moment.
 
-The updated schematic drives the red LED from 5 volts through a 330-ohm resistor and a 2N7000 MOSFET controlled by Nano pin D7. A 10-kiloohm resistor pulls the MOSFET gate to ground. Pins A4 and A5 provide the SDA and SCL lines for the I2C bus. Both lines have a 4.7-kiloohm pull-up resistor to 5 volts. The four-pin I2C connector also carries 5 volts and ground. The second device on the I2C bus must either support 5-volt signaling or be connected through a level translator. All ground connections should be tied together.
+## Power and output hardware
 
-Our schematic shows a 12-to-5-volt switching regulator. For the breadboard, we will use the supplied regulated 5-volt source instead of physically building that regulator. The regulator remains in the schematic. A jumper selects either the regulator’s 5-volt output or the supplied 5-volt source. It must not connect both. Power is delivered to the Nano through its 5V pin, not its VIN pin.
+The schematic includes a 12 V to 5 V DC/DC converter, as required by the project. The breadboard is intended to use the supplied regulated 5 V source instead. The two 5 V sources must not be connected together. The 5 V supply goes to the Nano's 5V pin, not its VIN pin. The schematic also includes small capacitors on the converter input and output to reduce supply noise.
 
-## Pin Connections for the Nano
+The updated schematic shows a red LED powered through a 330 Ohm resistor and switched to ground by a 2N7000 MOSFET. Nano pin D7 controls the MOSFET gate. A 10 kOhm resistor holds the gate low while the Nano is starting up. Assuming about 2 V across the LED, its approximate current is (5 V - 2 V) / 330 Ohm = 9 mA. The MOSFET and its wiring still need to be checked against the physical circuit.
 
-A0: Direct multiplexer output on the photographed breadboard or MCP6002 output in the updated schematic. D2-D4: Multiplexer channel select lines. D6: Multiplexer enable line. D7: Red LED control through the 2N7000 gate. A4 and A5: I2C SDA and SCL lines. D5 is unused.
+The I2C connector has SDA, SCL, 5 V, and ground. Nano pins A4 and A5 carry SDA and SCL. Each line has a 4.7 kOhm pull-up resistor to 5 V. An external controller must share ground with the Nano and must support 5 V I2C signals or use a level translator.
 
-## Temperature Calculations and Conversion
+## ADC and temperature calculations
 
-Assuming a typical diode voltage of 0.650 volts at 25 degrees Celsius, the current flowing through the 4.7-kiloohm resistor would be (5.0 - 0.650) / 4700 = 0.00093 amps or 0.93 milliamps. In total, all 8 diodes combined would draw approximately 7.4 milliamps. Assuming the red LED drops 2 volts, the current through the LED would be (5 - 2) / 1000 = 3 milliamps. Again, these are just rough estimates to allow us to compare against component specifications during construction.
+At an assumed diode voltage of 0.65 V, the current through one 4.7 kOhm bias resistor is (5 V - 0.65 V) / 4700 Ohm = 0.00093 A, or about 0.93 mA. Eight channels draw about 7.4 mA from their bias resistors. This is only an estimate until the actual diodes are measured.
 
-The Nano’s ADC has 1024 possible values. Given a 1.1-volt reference, each value corresponds to approximately 1.1 / 1024 = 1.07 millivolts. Therefore, the estimated voltage can be calculated as V = ADC Value * 1.1 / 1024. If we assume a slope of -2 millivolts per degree Celsius, then each individual ADC step would correspond to approximately 0.54 degrees Celsius. Again, this represents resolution, not accuracy.
+The uploaded code uses the Nano's internal 1.1 V ADC reference for the direct diode signal. The ADC has 1024 steps, so one step is about 1.1 V / 1024 = 1.07 mV. If a diode changes by about 2 mV per degree Celsius, one ADC step represents about 0.54 degrees Celsius. This is resolution, not accuracy. The real diode slope and ADC reference voltage must be measured before the reported temperatures can be trusted.
 
-## Calibration Process
+The updated schematic also shows an MCP6002 amplifier between the multiplexer and A0. Its 47 kOhm feedback resistor and 10 kOhm resistor to ground give a nominal gain of 1 + 47 / 10 = 5.7. A 0.65 V input would therefore produce about 3.7 V. The second amplifier is connected as a grounded follower so it is not left floating. The amplifier is a proposed schematic feature. It cannot be used with the uploaded firmware's 1.1 V ADC reference because the ADC reading would saturate. If the amplifier is built, the firmware must use a suitable reference and be recalibrated before testing temperatures.
 
-Prior to utilizing the system, we must calibrate each diode. To accomplish this task, we need to determine the voltage produced by each diode at two distinct temperatures. From there, we can calculate the slope as (V2 - V1) / (T2 - T1). Once we have determined the slope for each diode, we can utilize that slope along with a measurement taken at one of those measured temperatures to convert voltage to temperature. Prior to accepting the warning threshold, we recommend verifying a reading near 60 degrees Celsius. Ultimately, we must measure the actual reference voltage used by the Nano’s ADC. Until such time as we perform those measurements, the software will continue to report readings as being uncalibrated.
+## Program flow and engineering choices
 
-## Output Over I2C Interface
+![Program flowchart](figures/flowchart.png)
 
-The Nano is designed to scan channels 0 through 7 about every 50 milliseconds. The actual timing still needs to be measured. Readings that fall outside of a predetermined range (near zero, saturated, etc.) are ignored. The maximum remaining temperature is reported. Should a sensor fail, the LED will blink. The warning light will illuminate once the temperature rises above 60 degrees Celsius and extinguish once the temperature falls to 58 degrees Celsius or lower if all sensors are functioning properly. A two-degree margin exists to prevent rapid on/off transitions near the threshold.
+Figure 2. The Nano reads every channel, finds the highest valid temperature, updates the LED, and makes the data available over I2C.
 
-The Nano operates as an I2C slave device with a 7-bit address of 0x32. An external master device sends a page number (0 or 1) to the Nano. Following receipt of the page number, the Nano responds with 22 bytes of data. Page 0 contains the maximum temperature. Page 1 contains the temperatures for sensors 0 through 7. Each page starts with a version byte, followed by a page number byte, then a two-byte sequence number, a status byte, and a hottest-channel number byte. Each temperature is represented as a signed 16-bit integer value in hundredths of a degree Celsius. A value of -32768 indicates an invalid reading. The external controller should use pages with matching sequence numbers. Otherwise, it should read them again.
+For each channel, the code changes the multiplexer selection, waits 100 microseconds, and discards the first ADC reading. This gives the signal time to settle after switching. It then averages eight readings. We chose a simple average because it reduces random ADC noise without adding more circuit parts or much code. Averaging does not fix a wrong calibration value, and a median filter might handle isolated spikes better. We can change the filtering after measuring the real hardware.
 
-## Byte Layout
+The code checks whether the voltage is between 0.25 V and 0.95 V and whether the calculated temperature is between -40 and 125 degrees Celsius. Readings outside these example limits are marked invalid. It finds the highest valid temperature in one pass through the eight results. Sorting all the temperatures would do extra work when only the highest value is needed.
 
-Bytes 0-1: version and page number. Bytes 2-3: scan sequence. Bytes 4-5: status flags and hottest channel. Page 0, bytes 6-7: maximum temperature. Page 1, bytes 6-21: temperatures for sensors 0-7. The unused bytes on Page 0 are zero. Status flags indicate a high temperature, sensor fault, incomplete calibration, and data availability.
+The high-temperature alert starts above 60 degrees Celsius. It clears at 58 degrees Celsius or lower, and only when all sensors are valid. The 2-degree gap prevents the LED from rapidly turning on and off when a reading stays close to 60 degrees. A sensor fault also makes the LED blink. The code aims to start a new scan about every 50 milliseconds, but the timing has not been measured on the complete circuit.
 
-## Remaining Tasks Before Demonstration
+## I2C data
 
-Identify the diodes and verify the Nano model. Check the 5-volt rail and diode polarity before applying power. Build one channel, then all 8 channels with the CD4051BE. Measure the ADC reference voltage and calibrate each diode, including a check near 60 degrees Celsius. Test every channel, the I2C output, the LED threshold, and the scan timing. Record the results.
+The Nano is an I2C device at address 0x32. An external controller selects page 0 or page 1 and reads 22 bytes. Page 0 contains the highest valid temperature. Page 1 contains all eight sensor temperatures. Using two short pages lets a controller request only the maximum when it does not need every reading.
 
-The hardware and software deadline is Nov. 1. Testing is part of showing that the hardware and software work. It is not an Oct. 18 deadline.
+Each page starts with a version number, page number, scan number, status flags, and the number of the hottest channel. Temperatures are sent as signed numbers in hundredths of a degree Celsius. A value of -32768 means that a reading is invalid. The controller should compare the scan numbers on the two pages if it needs results from the same scan. A status flag says that calibration is incomplete.
 
-Our Altium file opens in Altium Designer. However, we have not yet obtained a clean electrical rule check result or an Altium-native PDF export. The schematic PDF included with the project is a separate review copy. The added amplifier and MOSFET have not been confirmed on the photographed breadboard. The firmware uploaded to the Nano still uses the direct-input design. Currently, the virtual machine is displaying a Professional roaming license. Since this project requires a Student Edition license, the group needs to verify which type of license is acceptable to the reviewers.
+## What remains to be checked
+
+Before treating the system as working, we need to identify the diodes, confirm the multiplexer and MOSFET part markings, and check the breadboard wiring and supply voltage. We then need to measure and calibrate each diode, test a reading near 60 degrees Celsius, check the LED response, read both I2C pages with an external controller, and measure scan timing. The amplifier shown on the schematic must either be built with matching firmware or be clearly identified as a proposed feature. The Altium project still needs an electrical-rule check and an Altium-native PDF export.
+
+The complete [schematic PDF](../hardware/schematic.pdf) and [Altium project](../hardware/altium/rfr27-temperature-monitor.PrjPcb) are included in the repository.
 
 ## References
 
-Texas Instruments CD74HC4067 and [CD4051BE data sheets](https://www.ti.com/lit/ds/symlink/cd4051b.pdf), [Microchip MCP6002 data sheet](https://www.microchip.com/content/dam/mchp/documents/MSLD/ProductDocuments/DataSheets/MCP6001-1R-1U-2-4-1-MHz-Low-Power-Op-Amp-DS20001733L.pdf), [onsemi 2N7000 data sheet](https://www.onsemi.com/pdf/datasheet/nds7002a-d.pdf), Microchip ATmega328P data sheet, Arduino Nano pinout diagram, and RECOM R-78E-0.5 data sheet.
+- [Texas Instruments CD74HC4067 data sheet](https://www.ti.com/lit/ds/symlink/cd74hc4067.pdf)
+- [Texas Instruments CD4051B data sheet](https://www.ti.com/lit/ds/symlink/cd4051b.pdf)
+- [Microchip MCP6002 data sheet](https://www.microchip.com/content/dam/mchp/documents/MSLD/ProductDocuments/DataSheets/MCP6001-1R-1U-2-4-1-MHz-Low-Power-Op-Amp-DS20001733L.pdf)
+- [onsemi 2N7000 data sheet](https://www.onsemi.com/pdf/datasheet/nds7002a-d.pdf)
+- [RECOM R-78E-0.5 data sheet](https://recom-power.com/pdf/Innoline/R-78E-0.5.pdf)
